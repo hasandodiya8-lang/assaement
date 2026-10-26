@@ -1,0 +1,32 @@
+2.10 Functions Part 2 - Lambda, Map, Filter, Reduce
+
+"""Examples using lambda, map, filter, and reduce."""
+from functools import reduce
+
+# 1. Add 18% GST to a price.
+add_gst = lambda price: price * 1.18
+print(add_gst(500))  # 590.0
+
+# 2. Trim product names and convert them to title case.
+products = [" pizza ", "BURGER", " fries "]
+clean_products = list(map(lambda name: name.strip().title(), products))
+print(clean_products)  # ['Pizza', 'Burger', 'Fries']
+
+# 3. Keep usernames that start with A, ignoring case.
+usernames = ["Aarav", "priya", "anaya", "Kabir", "AMIT"]
+a_names = list(filter(lambda username: username.lower().startswith("a"), usernames))
+print(a_names)  # ['Aarav', 'anaya', 'AMIT']
+
+# 4. Add all order amounts to get the total bill.
+order_amounts = [250, 120, 300, 90]
+total_bill = reduce(lambda total, amount: total + amount, order_amounts, 0)
+print(total_bill)  # 760
+
+# 5. Average ratings that are 4 or above.
+ratings = [5, 4, 3, 5, 2, 4]
+high_ratings = list(filter(lambda rating: rating >= 4, ratings))
+# map() keeps the selected ratings as values for the sum calculation.
+rating_sum = reduce(lambda total, rating: total + rating,
+                    map(lambda rating: rating, high_ratings), 0)
+average_rating = rating_sum / len(high_ratings) if high_ratings else 0
+print(average_rating)  # 4.5

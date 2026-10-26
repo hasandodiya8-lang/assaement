@@ -1,0 +1,66 @@
+2.21 APIs Using Requests (Part 1)
+
+```python
+import requests
+
+# 1. Fetch Bitcoin's current INR price and print the HTTP status code
+url = "https://api.coingecko.com/api/v3/simple/price"
+response = requests.get(url, params={"ids": "bitcoin", "vs_currencies": "inr"})
+print(response.status_code)
+```
+
+```python
+# 2. Fetch and print Ahmedabad's current weather
+# Replace with your OpenWeatherMap API key.
+API_KEY = "YOUR_OPENWEATHERMAP_API_KEY"
+
+url = "https://api.openweathermap.org/data/2.5/weather"
+response = requests.get(
+    url,
+    params={"q": "Ahmedabad", "appid": API_KEY}
+)
+print(response.json())
+```
+
+OpenWeatherMap requires an API key. Its current weather response stores the temperature at `main.temp`; use `units="metric"` to get Celsius. [OpenWeatherMap current weather API](https://openweathermap.org/api/current)
+
+```python
+# 3. Return the temperature for a city, in Celsius
+def get_city_temperature(city):
+    response = requests.get(
+        "https://api.openweathermap.org/data/2.5/weather",
+        params={
+            "q": city,
+            "appid": API_KEY,
+            "units": "metric"
+        }
+    )
+    data = response.json()
+    return data["main"]["temp"]
+
+print(get_city_temperature("Ahmedabad"))
+```
+
+```python
+# 4. Send data to httpbin and print the status and response
+response = requests.post(
+    "https://httpbin.org/post",
+    data={"name": "Your Name", "favorite_app": "Instagram"}
+)
+print(response.status_code)
+print(response.json())
+```
+
+```python
+# 5. Parse the response as JSON before accessing its fields
+import requests
+
+response = requests.get(
+    "https://api.coingecko.com/api/v3/simple/price",
+    params={"ids": "dogecoin", "vs_currencies": "inr"}
+)
+data = response.json()
+print(data["dogecoin"]["inr"])
+```
+
+The bug was treating the `Response` object like a dictionary. Calling `.json()` parses the response body into a Python dictionary first.

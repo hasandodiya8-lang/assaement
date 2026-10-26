@@ -1,0 +1,51 @@
+2.16 Regular Expressions (Regex)
+
+import re
+
+# 1. Find Indian phone numbers in the format +91-XXXXXXXXXX
+text = "Call +91-9876543210 or +91-9123456780 for details."
+phone_numbers = re.findall(r"\+91-\d{10}", text)
+print(phone_numbers)
+
+
+# 2. Find the first date in DD/MM/YYYY format, checking one line at a time
+message = """The event is planned soon.
+Please note the date: 25/12/2026.
+Another date is 01/01/2027."""
+
+first_date = None
+for line in message.splitlines():
+    match = re.search(r"\d{2}/\d{2}/\d{4}", line)
+    if match:
+        first_date = match.group()
+        break
+
+if first_date:
+    print("First date found:", first_date)
+else:
+    print("No date found")
+
+
+# 3. Replace integers and decimal numbers with NUM
+review = "This 2.5-star item cost 120 dollars, but 3 features are useful."
+updated_review = re.sub(r"\d+(?:\.\d+)?", "NUM", review)
+print(updated_review)
+
+
+# 4. Extract the username part of each email address
+def extract_usernames(text):
+    emails = re.findall(
+        r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b",
+        text,
+    )
+    return [email.split("@")[0] for email in emails]
+
+
+text = "Contact alex.smith@example.com or help+shop@example.org."
+print(extract_usernames(text))
+
+
+# 5. Match Indian and US phone numbers
+phone_pattern = r"\+91-\d{10}|\(\d{3}\) \d{3}-\d{4}"
+sample = "India: +91-9876543210; US: (415) 555-0132."
+print(re.findall(phone_pattern, sample))

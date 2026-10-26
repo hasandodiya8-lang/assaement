@@ -1,0 +1,38 @@
+2.8 Loops
+"""Loop examples for Flipkart, Zomato, Instagram, and Spotify."""
+
+# 1. Total the prices of 10 recent Flipkart orders.
+flipkart_prices = [499, 1299, 2499, 799, 1599, 349, 2199, 999, 1799, 599]
+total_spent = 0
+for price in flipkart_prices:
+    total_spent += price
+print(f"Total amount spent on Flipkart: ₹{total_spent}")
+
+# 2. Count down the Zomato delivery time from 10 minutes to 0.
+remaining_minutes = 10
+while remaining_minutes >= 0:
+    print(f"Time remaining: {remaining_minutes} minutes")
+    remaining_minutes -= 1
+
+# 3. Stop counting when a post has more than 1000 likes.
+instagram_likes = [245, 812, 654, 1205, 430, 1500]
+posts_checked = 0
+for likes in instagram_likes:
+    posts_checked += 1
+    if likes > 1000:
+        break
+print(f"Posts checked: {posts_checked}")
+
+# 4. Print eight Spotify playlists with positions starting at 1.
+spotify_playlists = [
+    "Chill Vibes",
+    "Workout Hits",
+    "Focus Flow",
+    "Road Trip Anthems",
+    "Acoustic Mornings",
+    "Throwback Favorites",
+    "Late Night Jazz",
+    "Feel-Good Pop",
+]
+for position, playlist in enumerate(spotify_playlists, start=1):
+    print(f"{position}. {playlist}")

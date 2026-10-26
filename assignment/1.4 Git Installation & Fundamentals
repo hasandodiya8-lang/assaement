@@ -1,0 +1,83 @@
+#1.4 Git Installation & Fundamentals
+
+## 1. Install and verify Git
+
+Git is installed on my Windows computer. I verified the installation with:
+
+```text
+git version 2.53.0.windows.3
+```
+
+## 2. Configure Git username and email
+
+Run these commands with your own name and email:
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "your-email@example.com"
+```
+
+Verify the settings:
+
+```bash
+git config --global --get user.name
+git config --global --get user.email
+```
+
+## 3. Create the Recipe Collection repository
+
+I created a `Recipe Collection` folder, initialized it as a Git repository, and added a sample `recipes.txt` file.
+
+```bash
+cd "Recipe Collection"
+git init
+```
+
+The `.git` directory contains Git metadata such as `HEAD`, `config`, `description`, `index`, and the `hooks`, `info`, `logs`, `objects`, and `refs` folders.
+
+## 4. Clone a public music repository
+
+I tried to clone a public Spotify analysis repository:
+
+```bash
+git clone https://github.com/alexfunking/spotify-music-analysis.git
+```
+
+The clone failed because GitHub HTTPS authentication was unavailable in my environment, so I could not list the cloned files. Once access is available, list the files with:
+
+```bash
+cd spotify-music-analysis
+dir
+```
+
+## 5. Make five atomic wishlist commits
+
+I added one item to `wishlist.txt` per commit:
+
+```text
+Try a new cafe
+Watch a new movie
+Cook a new recipe
+Read a novel
+Visit a museum
+```
+
+The commits are:
+
+```text
+51ef3e9 Add cafe visit to wishlist
+fd4ca08 Add movie to wishlist
+6ea5cbe Add cooking idea to wishlist
+2e46468 Add book to wishlist
+1adb1b9 Add museum visit to wishlist
+```
+
+To push the commits, create a new GitHub repository and run:
+
+```bash
+git remote add origin https://github.com/YOUR-USERNAME/Recipe-Collection.git
+git branch -M main
+git push -u origin main
+```
+
+Replace `YOUR-USERNAME` with your GitHub username. The commits are local; pushing requires GitHub authentication.

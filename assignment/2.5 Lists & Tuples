@@ -1,0 +1,42 @@
+2.5 Lists & Tuples
+
+# 1. Playlist: create a list and append one more song
+playlist = ["Kesariya", "Blinding Lights", "Heeriye"]
+playlist.append("Shape of You")
+print("Updated playlist:", playlist)
+
+# 2. Shopping cart: extend the list with multiple items
+cart = ["T-shirt", "Jeans"]
+cart.extend(["Shoes", "Watch"])
+print("Final cart:", cart)
+
+# 3. A tuple is immutable, so its items cannot be changed after creation
+fav_brands = ("Nike", "Adidas", "Puma")
+
+try:
+    fav_brands[1] = "Reebok"
+except TypeError as error:
+    # This error occurs because tuples do not allow item assignment.
+    print("Tuple update error:", error)
+
+# 4. Remove and show the last order
+orders = ["Pizza", "Burger", "Fries", "Pasta"]
+removed_order = orders.pop()
+print("Removed order:", removed_order)
+print("Updated orders:", orders)
+
+# 5. Lists can change; tuples stay fixed.
+# Use a list for IPL teams if teams may be added or removed.
+# Use a tuple for season years when you want to keep the collection unchanged.
+ipl_teams = ["Mumbai Indians", "Chennai Super Kings", "Kolkata Knight Riders"]
+season_years = (2022, 2023, 2024)
+
+ipl_teams.append("Royal Challengers Bengaluru")
+print("Updated teams:", ipl_teams)
+
+try:
+    season_years += (2025,)
+    print("Updated seasons:", season_years)
+except TypeError as error:
+    # Tuples cannot be modified in place; create a new tuple if needed.
+    print("Tuple update error:", error)

@@ -1,0 +1,56 @@
+2.14 Iterators & Generators
+
+# 1. Use iter() and next() to print five favorite songs.
+songs = [
+    "Blinding Lights",
+    "Levitating",
+    "As It Was",
+    "Shape of You",
+    "Flowers",
+]
+
+song_iterator = iter(songs)
+
+for _ in range(5):
+    print(next(song_iterator))
+
+
+# 2. Use enumerate() to number items in a food order, starting at 1.
+food_order = ["Paneer tikka", "Butter naan", "Mango lassi"]
+
+for position, item in enumerate(food_order, start=1):
+    print(position, item)
+
+
+# 3. Use zip() to pair IPL teams with their scores.
+teams = ["Mumbai Indians", "Chennai Super Kings", "Rajasthan Royals"]
+scores = [186, 172, 194]
+
+for team, score in zip(teams, scores):
+    print(f"{team}: {score}")
+
+
+# 4. Yield YouTube video titles one at a time.
+def playlist_generator(video_titles):
+    for title in video_titles:
+        yield title
+
+
+videos = playlist_generator(["Python Basics", "Learn Recursion", "Generators Explained"])
+print(next(videos))
+print(next(videos))
+print(next(videos))
+
+
+# 5. Yield coupon codes from SAVE10 through SAVE50.
+def discount_coupon_generator():
+    for number in range(10, 51, 10):
+        yield f"SAVE{number}"
+
+
+coupons = discount_coupon_generator()
+print(next(coupons))  # SAVE10
+print(next(coupons))  # SAVE20
+print(next(coupons))  # SAVE30
+print(next(coupons))  # SAVE40
+print(next(coupons))  # SAVE50

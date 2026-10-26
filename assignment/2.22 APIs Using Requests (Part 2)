@@ -1,0 +1,78 @@
+2.22 APIs Using Requests (Part 2)
+
+```python
+import requests
+
+# 1. POST JSON data to httpbin
+response = requests.post(
+    "https://httpbin.org/post",
+    json={"name": "Your Name", "favorite_app": "Instagram"}
+)
+print(response.json())
+```
+
+```python
+# 2. Print the latest 5 public repositories for octocat
+response = requests.get(
+    "https://api.github.com/users/octocat/repos",
+    params={"sort": "created", "direction": "desc", "per_page": 5}
+)
+response.raise_for_status()
+
+for repo in response.json():
+    print(repo["name"], repo["created_at"])
+```
+
+```python
+# 3. Create a post and print its returned ID
+response = requests.post(
+    "https://jsonplaceholder.typicode.com/posts",
+    json={"title": "Example title", "body": "Example body", "userId": 1}
+)
+response.raise_for_status()
+print(response.json()["id"])
+```
+
+```python
+# 4. Save 10 random users to random_users.csv
+import csv
+
+response = requests.get("https://randomuser.me/api/", params={"results": 10})
+response.raise_for_status()
+
+users = response.json()["results"]
+
+with open("random_users.csv", "w", newline="", encoding="utf-8") as csvfile:
+    writer = csv.writer(csvfile)
+    writer.writerow(["Name", "Email"])
+
+    for user in users:
+        name = user["name"]
+        full_name = f'{name["first"]} {name["last"]}'
+        writer.writerow([full_name, user["email"]])
+```
+
+```python
+# 5. Save five trending movies to trending_movies.json
+import json
+
+TMDB_API_KEY = "YOUR_API_KEY"
+
+response = requests.get(
+    "https://api.themoviedb.org/3/trending/movie/day",
+    params={"api_key": TMDB_API_KEY}
+)
+response.raise_for_status()
+
+movies = response.json()["results"][:5]
+selected_movies = [
+    {
+        "title": movie["title"],
+        "release_date": movie["release_date"]
+    }
+    for movie in movies
+]
+
+with open("trending_movies.json", "w", encoding="utf-8") as jsonfile:
+    json.dump(selected_movies, jsonfile, indent=2, ensure_ascii=False)
+```

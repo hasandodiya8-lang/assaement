@@ -1,0 +1,43 @@
+2.9 Functions
+
+"""Function examples for prices, usernames, bills, delivery, and coupons."""
+
+
+def get_final_price(price, discount):
+    """Return price after applying discount as a percentage."""
+    return price * (1 - discount / 100)
+
+
+def format_username(name):
+    """Return a lowercase username with spaces removed."""
+    return name.lower().replace(" ", "")
+
+
+def split_bill(total_amount, num_people=2):
+    """Return each person's share of the bill."""
+    return total_amount / num_people
+
+
+def get_delivery_charge(order_amount, city="Ahmedabad"):
+    """Return delivery charge based on city."""
+    if city.lower() == "ahmedabad":
+        return 20
+    return 40
+
+
+def apply_coupon(price, coupon=None):
+    """Apply a 10% discount when the SAVE10 coupon is provided."""
+    if coupon == "SAVE10":
+        return price * 0.9
+    return price
+
+
+# Example calls
+print(get_final_price(1000, 20))  # 800.0
+print(format_username("Priya Sharma"))  # priyasharma
+print(split_bill(1200))  # 600.0 (2 people by default)
+print(split_bill(1200, 4))  # 300.0
+print(get_delivery_charge(500))  # 20 (Ahmedabad by default)
+print(get_delivery_charge(500, "Mumbai"))  # 40
+print(apply_coupon(1000))  # 1000 (no coupon)
+print(apply_coupon(1000, "SAVE10"))  # 900.0

@@ -1,0 +1,64 @@
+2.13 Error & Exception Handling
+
+# 1. Divide songs evenly across playlists
+def safe_playlist_divide(total_songs, num_playlists):
+    try:
+        return total_songs / num_playlists
+    except ZeroDivisionError:
+        print("Cannot divide by zero playlists!")
+        return None
+
+
+print(safe_playlist_divide(40, 4))  # 10.0
+safe_playlist_divide(40, 0)         # Prints the error message
+
+
+# 2. Split a bill among friends
+try:
+    bill_amount = float(input("Enter the bill amount: "))
+    num_friends = int(input("Enter the number of friends: "))
+
+    if num_friends == 0:
+        raise ZeroDivisionError
+
+except ValueError:
+    print("Please enter a valid number.")
+
+except ZeroDivisionError:
+    print("Number of friends must be greater than zero.")
+
+else:
+    print(f"Each person pays: {bill_amount / num_friends:.2f}")
+
+finally:
+    print("Thank you for using Bill Splitter!")
+
+
+# 3. Validate a discount using a custom exception
+class InvalidDiscountError(Exception):
+    pass
+
+
+def get_discounted_price(price, discount_percent):
+    if not 0 <= discount_percent <= 100:
+        raise InvalidDiscountError(
+            "Discount must be between 0 and 100%"
+        )
+
+    return price * (1 - discount_percent / 100)
+
+
+try:
+    print(get_discounted_price(100, 20))  # 80.0
+    print(get_discounted_price(100, 120))
+except InvalidDiscountError as error:
+    print(error)
+
+
+# 4. Handle non-integer follower input
+followers = input("Enter your Instagram followers: ")
+
+try:
+    print("You have", int(followers), "followers")
+except ValueError:
+    print("Invalid input!")

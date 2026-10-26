@@ -1,0 +1,75 @@
+2.18 Encapsulation & Abstraction
+
+class Song:
+    def __init__(self, title, play_count=0):
+        self.title = title
+        self._play_count = play_count
+
+    def set_play_count(self, count):
+        if count >= 0:
+            self._play_count = count
+        else:
+            raise ValueError("Play count cannot be negative.")
+
+    def get_play_count(self):
+        return self._play_count
+
+
+class MovieTicket:
+    def __init__(self, price):
+        self._price = price
+
+    def get_price(self):
+        return self._price
+
+    def set_price(self, price):
+        if price >= 0:
+            self._price = price
+        else:
+            raise ValueError("Ticket price cannot be negative.")
+
+
+class MyntraProduct:
+    def __init__(self, name, price):
+        self.name = name
+        self._price = price
+        self._discount = 0
+
+    def apply_discount(self, discount):
+        if 0 <= discount <= 100:
+            self._discount = discount
+        else:
+            raise ValueError("Discount must be between 0 and 100%.")
+
+    def get_final_price(self):
+        return self._price * (1 - self._discount / 100)
+
+
+class InstaStory:
+    def __init__(self):
+        self._viewer_count = 0
+
+    def add_viewer(self):
+        self._viewer_count += 1
+
+    def get_viewer_count(self):
+        return self._viewer_count
+
+
+# Examples
+song = Song("Blinding Lights")
+song.set_play_count(1250)
+print("Play count:", song.get_play_count())
+
+ticket = MovieTicket(250)
+ticket.set_price(300)
+print("Ticket price:", ticket.get_price())
+
+product = MyntraProduct("T-shirt", 1000)
+product.apply_discount(20)
+print("Final product price:", product.get_final_price())
+
+story = InstaStory()
+story.add_viewer()
+story.add_viewer()
+print("Story viewers:", story.get_viewer_count())

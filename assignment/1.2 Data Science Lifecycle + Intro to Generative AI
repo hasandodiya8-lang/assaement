@@ -1,0 +1,86 @@
+1.2 Data Science Lifecycle + Intro to Generative AI
+## 1. Problem statement
+
+**App:** Zomato
+
+**Business problem:** Some users receive orders later than the delivery time shown when ordering. This can reduce customer satisfaction and lead to lower ratings or fewer repeat orders. I would build a data science project to predict delivery delays and identify the factors behind them, so Zomato can show more accurate delivery estimates and address recurring delays.
+
+## 2. Data needed
+
+| Data | Example fields | Source |
+|---|---|---|
+| Order and delivery records | Order time, promised and actual delivery times, restaurant, delivery distance | Database |
+| Restaurant details | Cuisine, preparation time, location, average order volume | Database or API |
+| Live traffic and weather | Traffic speed, congestion, rainfall, temperature | API |
+| Customer feedback | Ratings and comments after delivery | Database |
+
+## 3. Clean a sample dataset
+
+Since no dataset was provided, here is an illustrative sample of 10 orders:
+
+| order_id | restaurant | delivery_time (min) | rating |
+|---|---|---:|---:|
+| 101 | Spice Hub | 30 | 5 |
+| 102 | Pizza Town | 45 | 4 |
+| 103 | Spice Hub | 35 | 4 |
+| 104 | Green Bowl | 25 | 5 |
+| 105 | Pizza Town | 50 | 3 |
+| 106 | Spice Hub |  | 4 |
+| 107 | Tasty Dosa | 40 | 4 |
+| 108 | Green Bowl | 30 |  |
+| 109 | Pizza Town | 55 | 2 |
+| 110 | Tasty Dosa | 35 | 5 |
+
+Pandas code to remove rows with any missing value and lowercase restaurant names:
+
+```python
+import pandas as pd
+
+df = pd.DataFrame([
+    {"order_id": 101, "restaurant": "Spice Hub", "delivery_time": 30, "rating": 5},
+    {"order_id": 102, "restaurant": "Pizza Town", "delivery_time": 45, "rating": 4},
+    {"order_id": 103, "restaurant": "Spice Hub", "delivery_time": 35, "rating": 4},
+    {"order_id": 104, "restaurant": "Green Bowl", "delivery_time": 25, "rating": 5},
+    {"order_id": 105, "restaurant": "Pizza Town", "delivery_time": 50, "rating": 3},
+    {"order_id": 106, "restaurant": "Spice Hub", "delivery_time": None, "rating": 4},
+    {"order_id": 107, "restaurant": "Tasty Dosa", "delivery_time": 40, "rating": 4},
+    {"order_id": 108, "restaurant": "Green Bowl", "delivery_time": 30, "rating": None},
+    {"order_id": 109, "restaurant": "Pizza Town", "delivery_time": 55, "rating": 2},
+    {"order_id": 110, "restaurant": "Tasty Dosa", "delivery_time": 35, "rating": 5},
+])
+
+cleaned = df.dropna().copy()
+cleaned["restaurant"] = cleaned["restaurant"].str.lower()
+```
+
+The two rows with missing values (orders 106 and 108) are removed, leaving **8 orders**.
+
+## 4. Exploration summary
+
+For the cleaned dataset:
+
+- **Average delivery time:** 39.375 minutes, or about **39.4 minutes**
+- **Most common restaurant:** `pizza town`, with **3 orders**
+
+```python
+average_delivery_time = cleaned["delivery_time"].mean()
+most_common_restaurant = cleaned["restaurant"].mode()[0]
+```
+
+## 5. Synthetic food orders
+
+**Prompt used:**
+
+> Generate 5 fictional food delivery order records similar to this dataset. Use the columns order_id, restaurant, delivery_time, and rating. Give each record a unique order ID, a restaurant name, a delivery time in minutes, and an integer rating from 1 to 5. Return the results as a table. Do not include missing values.
+
+**Generated data:**
+
+| order_id | restaurant | delivery_time | rating |
+|---|---|---:|---:|
+| 111 | Curry Corner | 32 | 5 |
+| 112 | Pizza Town | 48 | 3 |
+| 113 | Green Bowl | 27 | 4 |
+| 114 | Spice Hub | 38 | 4 |
+| 115 | Tasty Dosa | 42 | 5 |
+
+These records are synthetic examples and do not represent actual Zomato orders.

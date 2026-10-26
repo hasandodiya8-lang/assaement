@@ -1,0 +1,69 @@
+2.12 File Handling (Text, CSV, JSON)
+
+"""Examples using text files, CSV, JSON, and pathlib."""
+import csv
+import json
+from pathlib import Path
+
+# 1. Create my_fav_songs.txt with five songs, one per line.
+songs = [
+    "Blinding Lights",
+    "Levitating",
+    "As It Was",
+    "Shape of You",
+    "Flowers",
+]
+
+with open("my_fav_songs.txt", "w", encoding="utf-8") as f:
+    for song in songs:
+        f.write(song + "\n")
+
+# 2. Read the songs and print each in uppercase.
+with open("my_fav_songs.txt", "r", encoding="utf-8") as f:
+    for line in f:
+        print(line.strip().upper())
+
+# 3. Create a sample IPL scores CSV, then print each player's strike rate.
+with open("ipl_scores.csv", "w", newline="", encoding="utf-8") as f:
+    writer = csv.writer(f)
+    writer.writerow(["Player", "Runs", "Balls"])
+    writer.writerows([
+        ["Virat Kohli", 82, 53],
+        ["Rohit Sharma", 65, 38],
+        ["Jasprit Bumrah", 12, 8],
+        ["KL Rahul", 47, 35],
+        ["Rashid Khan", 21, 10],
+    ])
+
+with open("ipl_scores.csv", "r", newline="", encoding="utf-8") as f:
+    reader = csv.reader(f)
+    next(reader)  # Skip the header row.
+    for player, runs, balls in reader:
+        strike_rate = int(runs) / int(balls) * 100
+        print(f"{player}: {strike_rate:.2f}")
+
+# 4. Load restaurant data from zomato_restaurants.json and print ratings above 4.0.
+restaurants_data = [
+    {"name": "Spice Garden", "cuisine": "Indian", "rating": 4.5},
+    {"name": "Noodle House", "cuisine": "Chinese", "rating": 4.0},
+    {"name": "Tandoori Corner", "cuisine": "Indian", "rating": 4.2},
+    {"name": "Pizza Point", "cuisine": "Italian", "rating": 3.8},
+]
+
+with open("zomato_restaurants.json", "w", encoding="utf-8") as f:
+    json.dump(restaurants_data, f, indent=2)
+
+with open("zomato_restaurants.json", "r", encoding="utf-8") as f:
+    restaurants = json.load(f)
+
+for restaurant in restaurants:
+    if restaurant["rating"] > 4.0:
+        print(restaurant["name"])
+
+# 5. Check whether the song file exists and print its absolute path.
+songs_path = Path("my_fav_songs.txt")
+
+if songs_path.exists():
+    print(songs_path.resolve())
+else:
+    print("File not found")

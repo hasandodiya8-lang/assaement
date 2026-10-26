@@ -1,0 +1,59 @@
+2.15 Modules & Packages
+
+1. Cricket score statistics
+import math
+import statistics
+
+scores = [45, 82, 17, 103, 66]
+
+print("Mean:", statistics.mean(scores))
+print("Median:", statistics.median(scores))
+print("Square root of highest score:", math.sqrt(max(scores)))
+2. Custom playlist module
+Save these two files in the same folder.
+
+playlist_utils.py
+def get_total_duration(songs):
+    total_seconds = sum(songs)
+    return total_seconds / 60
+main.py
+from playlist_utils import get_total_duration
+
+playlist = [210, 185, 242, 198]  # Song durations in seconds
+total_minutes = get_total_duration(playlist)
+
+print(f"Playlist duration: {total_minutes:.2f} minutes")
+3. Create a dated notes folder
+import os
+import datetime
+
+today = datetime.datetime.today().strftime("%Y-%m-%d")
+folder_path = os.path.join("MyNotes", today)
+
+os.makedirs(folder_path, exist_ok=True)
+print("Created:", folder_path)
+4. Fetch trending movie titles
+Install requests with python -m pip install requests, then run:
+import requests
+
+url = "https://api.themoviedb.org/3/trending/movie/day"
+response = requests.get(url, params={"api_key": "demo"}, timeout=10)
+response.raise_for_status()
+
+movies = response.json().get("results", [])
+
+for movie in movies[:3]:
+    print(movie["title"])
+The example uses the demo key from the prompt. If TMDB rejects it, replace it with a valid API key.
+5. Create a virtual environment and install NumPy
+From your project directory, run:
+python -m venv insta_caption_generator
+Activate it:
+# Windows PowerShell
+.\insta_caption_generator\Scripts\Activate.ps1
+
+# macOS or Linux
+source insta_caption_generator/bin/activate
+Then install NumPy inside the active environment:
+python -m pip install numpy
+You can confirm the installation with python -m pip show numpy.

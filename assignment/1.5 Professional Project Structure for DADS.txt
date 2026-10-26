@@ -1,0 +1,64 @@
+# 1.5 Professional Project Structure for DA/DS
+
+## 1. Folder structure
+
+```text
+spotify-data-analysis/
+├── data/
+│   ├── raw/
+│   └── processed/
+├── notebooks/
+├── scripts/
+├── dashboards/
+└── reports/
+```
+
+## 2. `.gitignore`
+
+```gitignore
+/data/raw/*.csv
+/data/raw/**/*.csv
+**/.ipynb_checkpoints/
+*.pyc
+```
+
+This ignores CSV files under `data/raw`, Jupyter checkpoint folders, and Python bytecode files.
+
+## 3. `README.md`
+
+```markdown
+# Spotify Data Analysis
+
+## Purpose
+This project organizes Spotify-related data and analysis work.
+
+## Folders
+- `data/raw/` — original input data.
+- `data/processed/` — cleaned data ready for analysis.
+- `notebooks/` — exploratory analysis notebooks.
+- `scripts/` — reusable Python scripts.
+- `dashboards/` — dashboard files and assets.
+- `reports/` — written findings and exported charts.
+
+## Run a script
+From the project root, run:
+python scripts/analyze_spotify.py --input data/processed/tracks.csv
+```
+
+## 4. Git repository and GitHub
+
+The local repository has been initialized and committed. To publish it, create a **public** GitHub repository named `spotify-data-analysis`, then run:
+
+```bash
+git remote add origin https://github.com/YOUR-USERNAME/spotify-data-analysis.git
+git branch -M main
+git push -u origin main
+```
+
+Replace `YOUR-USERNAME` with your GitHub username. The push requires GitHub authentication.
+
+## 5. Three additions for a machine-learning project
+
+1. Add `models/` to store trained models and checkpoints.
+2. Add `src/` to organize reusable preprocessing, feature engineering, training, and prediction code.
+3. Add `tests/` and configuration or experiment-tracking files to test pipelines and make runs reproducible.

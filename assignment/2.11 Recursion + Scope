@@ -1,0 +1,61 @@
+2.11 Recursion + Scope
+
+// 1. Sum the first n array elements
+function sumArray(arr, n) {
+  if (n <= 0) return 0; // Base case
+  return arr[n - 1] + sumArray(arr, n - 1);
+}
+
+console.log(sumArray([120, 340, 550, 200], 3)); // 1010
+
+
+// 2. Reverse a string without reverse() or slicing
+function reverseString(s) {
+  if (s.length <= 1) return s; // Base case
+  return reverseString(s.substring(1)) + s[0];
+}
+
+console.log(reverseString("instagram")); // "margatsni"
+
+
+// 3. Local and global scope
+let discount = 10; // Global variable
+
+function applyCoupon() {
+  let discount = 25; // Local variable; shadows the global one
+  console.log("Inside applyCoupon:", discount);
+}
+
+applyCoupon(); // Inside applyCoupon: 25
+console.log("Outside applyCoupon:", discount); // Outside applyCoupon: 10
+
+
+// 4. Total likes for the first n posts
+function countLikes(posts, n) {
+  if (n <= 0) return 0; // Base case
+  return posts[n - 1] + countLikes(posts, n - 1);
+}
+
+console.log(countLikes([120, 340, 550, 200], 3)); // 1010
+
+
+// 5. Sum the digits of a number, printing each recursive step
+function sumDigits(number) {
+  const n = Math.abs(Math.trunc(number));
+
+  if (n < 10) {
+    console.log(`Base case: ${n}`);
+    return n;
+  }
+
+  const lastDigit = n % 10;
+  const remainingDigits = Math.floor(n / 10);
+
+  console.log(`sumDigits(${n}): ${lastDigit} + sumDigits(${remainingDigits})`);
+  const result = lastDigit + sumDigits(remainingDigits);
+  console.log(`Returning ${result} for sumDigits(${n})`);
+
+  return result;
+}
+
+console.log("Answer:", sumDigits(1234)); // Answer: 10

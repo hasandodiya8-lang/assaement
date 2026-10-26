@@ -1,0 +1,43 @@
+2.7 Conditional Statements
+
+1. **Spotify listening time**
+   ```python
+   minutes = int(input("Enter your Spotify listening time in minutes: "))
+   if minutes > 120:
+       print("Time for a break!")
+   else:
+       print("Keep enjoying your music!")
+   ```
+
+2. **Zomato order amount**
+   ```python
+   amount = float(input("Enter your Zomato order amount: ₹"))
+   if amount > 500:
+       print("Eligible for free delivery")
+   else:
+       print("Delivery charges apply")
+   ```
+
+3. **Flipkart cart value**
+   ```python
+   amount = float(input("Enter your Flipkart cart value: ₹"))
+   if amount > 2000:
+       print("You get a 10% discount")
+   elif amount >= 1000:
+       print("You get a 5% discount")
+   else:
+       print("No discount")
+   ```
+
+4. **IPL fantasy points**
+   ```python
+   points = int(input("Enter your IPL fantasy points: "))
+   if points > 500:
+       print("Superstar")
+   elif points >= 300:
+       print("Pro Player")
+   elif points >= 100:
+       print("Casual Player")
+   else:
+       print("Newbie")
+   ```

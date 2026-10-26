@@ -1,0 +1,38 @@
+2.3 Data Types
+
+```python
+# 1. Variables and their types
+age = 20
+gpa = 3.8
+name = "Hasnain"
+has_spotify_subscription = True
+
+print("Age:", age, "| Type:", type(age))
+print("GPA:", gpa, "| Type:", type(gpa))
+print("Name:", name, "| Type:", type(name))
+print("Spotify subscription:", has_spotify_subscription, "| Type:", type(has_spotify_subscription))
+
+# 2. Convert price strings to floats and calculate the total
+price_strings = ["199.99", "349.50", "120.00"]
+prices = []
+
+for price in price_strings:
+    prices.append(float(price))
+
+total = sum(prices)
+print("Converted prices:", prices)
+print("Total:", total)
+
+# 3. Check offer eligibility
+def is_offer_eligible(amount):
+    return amount >= 500
+
+print("₹500 eligible:", is_offer_eligible(500))
+print("₹499.99 eligible:", is_offer_eligible(499.99))
+
+# 4. Mask a phone number, showing only its last four digits
+phone_number = 9876543210
+phone_string = str(phone_number)
+masked_phone = "*" * (len(phone_string) - 4) + phone_string[-4:]
+print("Masked phone number:", masked_phone)
+```

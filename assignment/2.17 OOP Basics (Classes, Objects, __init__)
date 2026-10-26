@@ -1,0 +1,45 @@
+2.17 OOP Basics (Classes, Objects, __init__)
+
+class Song:
+    def __init__(self, title, artist, duration):
+        self.title = title
+        self.artist = artist
+        self.duration = duration  # seconds
+
+    def play_preview(self):
+        print(f"Playing 30 second preview of {self.title} by {self.artist}")
+
+
+# 1–2. Create two songs and play their previews.
+song1 = Song("Blinding Lights", "The Weeknd", 200)
+song2 = Song("Levitating", "Dua Lipa", 203)
+
+song1.play_preview()
+song2.play_preview()
+
+
+class FoodOrder:
+    def __init__(self, restaurant_name, items, order_total):
+        self.restaurant_name = restaurant_name
+        self.items = items
+        self.order_total = order_total
+
+    def add_item(self, item, price):
+        self.items.append(item)
+        self.order_total += price
+
+
+# 3. Create an order with two items.
+order = FoodOrder(
+    restaurant_name="Spice Garden",
+    items=["Paneer tikka", "Butter naan"],
+    order_total=450.00,
+)
+
+# 4. Add two more items and show the updated order.
+order.add_item("Mango lassi", 120.00)
+order.add_item("Gulab jamun", 90.00)
+
+print("Restaurant:", order.restaurant_name)
+print("Items:", order.items)
+print(f"Updated total: ₹{order.order_total:.2f}")

@@ -1,0 +1,78 @@
+2.19 Inheritance & Polymorphism
+
+# 1. Playlist inheritance and method overriding
+class Playlist:
+    def play(self):
+        print("Playing playlist")
+
+
+class SpotifyPlaylist(Playlist):
+    def play(self):
+        print("Playing Spotify playlist")
+
+
+Playlist().play()
+SpotifyPlaylist().play()
+
+
+# 2. Product discount overriding
+class Product:
+    def getDiscount(self):
+        return 5
+
+
+class MyntraProduct(Product):
+    def getDiscount(self):
+        return 15
+
+
+print(f"Product discount: {Product().getDiscount()}%")
+print(f"Myntra product discount: {MyntraProduct().getDiscount()}%")
+
+
+# 3. Polymorphic profile display
+class BasicProfile:
+    def __init__(self, name):
+        self.name = name
+
+    def display(self):
+        print(f"Profile: {self.name}")
+
+
+class InfluencerProfile(BasicProfile):
+    def __init__(self, name, follower_count):
+        super().__init__(name)
+        self.follower_count = follower_count
+
+    def display(self):
+        print(f"Profile: {self.name}, Followers: {self.follower_count}")
+
+
+def showProfileDetails(profile):
+    profile.display()
+
+
+showProfileDetails(BasicProfile("Asha"))
+showProfileDetails(InfluencerProfile("Ravi", 25000))
+
+
+# 4. Ticket prices using polymorphism
+class Ticket:
+    def getPrice(self):
+        raise NotImplementedError("Subclasses must implement getPrice()")
+
+
+class MovieTicket(Ticket):
+    def getPrice(self):
+        return 250
+
+
+class ConcertTicket(Ticket):
+    def getPrice(self):
+        return 1200
+
+
+tickets = [MovieTicket(), ConcertTicket(), MovieTicket()]
+
+for ticket in tickets:
+    print(f"Ticket price: ₹{ticket.getPrice()}")

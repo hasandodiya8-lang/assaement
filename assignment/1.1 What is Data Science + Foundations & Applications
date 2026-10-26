@@ -1,0 +1,29 @@
+# Data Science in Popular Apps and Industries
+
+## 1. Three ways data science can improve Spotify
+
+1. **Personalized recommendations:** Spotify can analyze listening history, saved songs, and listening patterns to suggest music a user is likely to enjoy.
+2. **Discovering new music:** It can identify emerging artists and tracks that match a listener’s tastes, helping users find music beyond their usual playlists.
+3. **Improved listening experience:** By studying when and how people listen, Spotify can recommend suitable playlists for activities such as exercising, studying, or relaxing.
+
+## 2. Data science problems across five industries
+
+| Industry | Specific data science problem | How it helps |
+|---|---|---|
+| E-commerce | Product recommendations | Suggests products based on a customer’s interests and shopping history. |
+| Sports | Player performance analysis | Uses match and training data to assess performance and guide strategy. |
+| Banking | Fraud detection | Flags unusual transactions for review, helping protect customers. |
+| Entertainment | Content recommendations | Suggests films, shows, or music based on a viewer’s preferences. |
+| Transportation | Demand forecasting | Predicts where and when rides or deliveries will be needed, helping allocate resources. |
+
+## 3. The three pillars of data science
+
+- **Statistics:** The methods used to summarize data, identify patterns, and judge whether results are meaningful. *Example:* A streaming service can compare viewing patterns to see whether a new recommendation feature leads people to watch more of the shows they like.
+- **Programming:** The coding used to collect, process, analyze, and apply data at scale. *Example:* Google Maps uses software to process traffic and location data to calculate routes and estimated travel times.
+- **Domain knowledge:** Understanding the field and its users so that data analysis addresses the right problem. *Example:* In banking, knowledge of payment behavior helps analysts recognize which transaction patterns may indicate fraud.
+
+## 4. A competitive feature for an IPL streaming platform
+
+A streaming platform could build a **personalized live-match companion**. It could use a viewer’s favorite teams and players, the current match situation, and live statistics to surface relevant highlights, player comparisons, and short explanations of key moments. For example, when a batter reaches a milestone, the app could show a concise comparison with that player’s past IPL performance.
+
+**Most important pillar: Domain knowledge.** Understanding cricket and how fans follow a match would help the team choose useful moments and statistics. Programming would power the live feature, and statistics would help analyze performance, but domain knowledge would guide what is meaningful to show.

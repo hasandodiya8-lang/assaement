@@ -1,0 +1,29 @@
+2.4 Strings
+
+# 1. Clean the product name
+product = " Redmi-Note 12 Pro "
+cleaned_product = product.strip().replace("-", " ").title()
+print(cleaned_product)
+
+# 2. Split the description into features and print each on a new line
+description = "OnePlus Nord CE 3 Lite, 8GB RAM, 128GB Storage"
+features = description.split(",")
+
+for feature in features:
+    print(feature.strip())
+
+# 3. Return the first word (brand) from a product name
+def get_brand(product_name):
+    return product_name[:product_name.index(" ")]
+
+print(get_brand("boAt Rockerz 255F Wireless"))
+
+# 4. Format a message with the product name and price
+product_name = "Samsung Galaxy M34"
+price = 15999
+print(f"{product_name} is available at ₹{price}")
+
+# 5. Replace spaces with underscores and convert to uppercase
+product = "realme Narzo 50A Prime"
+formatted_product = product.replace(" ", "_").upper()
+print(formatted_product)

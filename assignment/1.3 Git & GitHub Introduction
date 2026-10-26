@@ -1,0 +1,30 @@
+ 1.3 Git & GitHub Introduction
+ 
+**1. GitHub account and profile**
+
+I couldn’t create or update a GitHub account because this session has no GitHub login or connected GitHub tool. You’ll need to sign up or sign in at [GitHub](https://github.com/), then set a profile picture and add a bio such as: “Interested in Data Science, analytics, and learning with Python.”
+
+**2. Local `InstaCloneDemo` repository**
+
+Created `InstaCloneDemo/readme.txt` and made the requested first commit:
+
+- Commit: `ddf72ac`
+- Message: `Initial commit for InstaCloneDemo`
+
+**3. Local `PlaylistTracker` repository**
+
+Created `PlaylistTracker/playlist.txt` with five songs and committed it locally. I couldn’t create the public GitHub repository or push because there’s no authenticated GitHub session available.
+
+**4. Three public Data Science repositories**
+
+- [IPL-Data-Analysis](https://github.com/tharaknath755-gif/IPL-Data-Analysis): `data/` holds raw and processed CSVs; `notebooks/` contains the IPL analysis notebook; `images/` stores charts. [Source](https://github.com/tharaknath755-gif/IPL-Data-Analysis)
+- [Spotify analysis](https://github.com/gandhianaya/spotify-analysis): `scripts/0_data_extraction/` contains Spotify data scraping and merging notebooks; `scripts/1_data_preparation/` has cleaning and feature engineering; `scripts/2_clustering/` contains clustering analyses. [Source](https://github.com/gandhianaya/spotify-analysis)
+- [Spotify music analysis](https://github.com/alexfunking/spotify-music-analysis): `data/` contains the track dataset; `notebooks/` has analysis notebooks; `src/` contains reusable analysis code. [Source](https://github.com/alexfunking/spotify-music-analysis)
+
+**5. Clone and commit history**
+
+I attempted to clone [ageron/handson-ml3](https://github.com/ageron/handson-ml3), but Git failed to authenticate its HTTPS connection from this machine, so the clone and local `git log` could not complete.
+
+The command used was `git clone https://github.com/ageron/handson-ml3.git handson-ml3`. GitHub’s public commit history shows the latest commit dated **May 19, 2026**. [Commit history](https://github.com/ageron/handson-ml3/commits/main/)
+
+To finish the GitHub-dependent parts, sign in to GitHub and install/configure GitHub CLI (`gh auth login`). Then create the public `PlaylistTracker` repository and push the existing local commit.

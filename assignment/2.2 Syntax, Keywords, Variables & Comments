@@ -1,0 +1,46 @@
+2.2 Syntax, Keywords, Variables & Comments
+
+```python
+"""
+This script demonstrates variables, comments, formatted strings,
+and dynamic typing using social media and food-order examples.
+"""
+
+# Number of Instagram followers
+instaFollowers = 1250
+
+# Number of likes on a post
+postLikes = 245
+
+# User's name
+userName = "Hasnain"
+
+print("Instagram followers:", instaFollowers)
+print("Post likes:", postLikes)
+print("User name:", userName)
+
+# Favorite food delivery app
+foodApp = "Zomato"
+
+# Amount paid for the last order
+lastOrderAmount = 450.75
+
+# Whether a coupon was used
+usedCoupon = True
+
+# Print the order details using a formatted string
+print(
+    f"My favorite food delivery app is {foodApp}. "
+    f"My last order cost ₹{lastOrderAmount:.2f}. "
+    f"Coupon used: {usedCoupon}."
+)
+
+# Assign an integer to playlistCount and print it
+playlistCount = 12
+print(playlistCount)
+
+# Reassign it as a string and print it to demonstrate dynamic typing
+playlistCount = "Twelve playlists"
+print(playlistCount)
+```
+

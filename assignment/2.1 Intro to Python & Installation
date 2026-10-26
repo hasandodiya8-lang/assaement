@@ -1,0 +1,21 @@
+2.1 Intro to Python & Installation
+
+**1.** Anaconda install karke Anaconda Navigator se Jupyter Notebook launch karein.
+
+**2.** Notebook cell mein yeh code likhein aur run karein:
+
+```python
+print("Hello, I am Hasnain and I love Instagram!")
+```
+
+Output: `Hello, I am Hasnain and I love Instagram!`
+
+**3.** `hello_script.py` file mein yeh code likhein aur command line mein `python hello_script.py` chalayein:
+
+```python
+print("Welcome to Data Science")
+```
+
+Output: `Welcome to Data Science`
+
+**4.** Data analytics project mein `.py` file reusable scripts aur automated tasks ke liye use hoti hai, jabki `.ipynb` notebook code, output, charts aur notes ke saath exploratory analysis ke liye use hoti hai.

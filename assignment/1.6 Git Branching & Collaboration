@@ -1,0 +1,94 @@
+# 1.6 Git Branching & Collaboration
+
+## 1. Create a repository and make the initial commit
+
+I created a Git repository for the **FoodieReview** app on the `main` branch. Its `README.md` describes the project as an app for sharing food reviews and ratings.
+
+```bash
+git init -b main
+git add README.md
+git commit -m "Initial commit for FoodieReview"
+```
+
+## 2. Create a feature branch and add a rating function
+
+I created the `feature/add-rating` branch and added `rating.js`:
+
+```javascript
+function addRating() {
+  console.log("Sample rating: 5 stars");
+}
+
+module.exports = { addRating };
+```
+
+I committed the change:
+
+```bash
+git add rating.js
+git commit -m "Add sample rating function"
+```
+
+## 3. Create and resolve a merge conflict
+
+On `main`, I added the comment `// main branch update` to the function line and committed it. On `feature/add-rating`, I added `// feature branch update` to that same line and committed it. Merging the feature branch into `main` caused a conflict in `rating.js`.
+
+I resolved the conflict by keeping both comments:
+
+```javascript
+function addRating() { // main branch update
+  // feature branch update
+  console.log("Sample rating: 5 stars");
+}
+
+module.exports = { addRating };
+```
+
+Then I committed the resolution:
+
+```bash
+git add rating.js
+git commit -m "Resolve rating.js merge conflict"
+```
+
+## 4. Push the branch and open a Pull Request
+
+After creating a GitHub repository named `FoodieReview` and authenticating, push the branches:
+
+```bash
+git remote add origin https://github.com/YOUR-USERNAME/FoodieReview.git
+git push -u origin main
+git push -u origin feature/add-rating
+```
+
+Create a Pull Request from `feature/add-rating` to `main` with this description:
+
+> Added the `addRating()` sample function. I resolved the merge conflict in `rating.js` by preserving both the main branch and feature branch comments.
+
+## 5. Fork an open-source repository and propose an Indian-currency adaptation
+
+Fork a public calculator repository on GitHub, then clone your fork and create a branch:
+
+```bash
+git clone https://github.com/YOUR-USERNAME/REPOSITORY.git
+cd REPOSITORY
+git switch -c feature/indian-currency
+```
+
+Add a comment to a relevant file describing the proposed adaptation, for example:
+
+```javascript
+// For Indian users, format currency in INR (₹) and support lakh and crore groupings.
+```
+
+Commit and push the branch:
+
+```bash
+git add .
+git commit -m "Document Indian currency adaptation"
+git push -u origin feature/indian-currency
+```
+
+Then open a Pull Request from your fork’s `feature/indian-currency` branch to the original repository’s default branch.
+
+**Note:** The FoodieReview repository and merge resolution were completed locally. Publishing the branches and completing the fork and Pull Request steps require GitHub authentication.

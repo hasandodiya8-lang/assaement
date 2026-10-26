@@ -1,0 +1,44 @@
+2.6 Dictionaries & Sets
+
+```python
+# 1. Create a dictionary of five playlists and their durations in minutes
+playlist_durations = {
+    "Bollywood Hits": 180,
+    "Chill Vibes": 150,
+    "Workout Mix": 120,
+    "Lo-fi Focus": 200,
+    "90s Classics": 165
+}
+
+# Query and print one playlist's duration
+print("Chill Vibes duration:", playlist_durations["Chill Vibes"], "minutes")
+
+# 2. Add a playlist and update an existing playlist's duration
+playlist_durations["Road Trip Songs"] = 140
+playlist_durations["Bollywood Hits"] = 190
+print("Updated playlists:", playlist_durations)
+
+# 3. Delete one playlist
+del playlist_durations["90s Classics"]
+print("After deletion:", playlist_durations)
+
+# 4. Find food items ordered in both weeks and all unique items
+last_week = {"Pizza", "Fries", "Burger"}
+this_week = {"Burger", "Pasta", "Fries"}
+
+print("Ordered both weeks:", last_week.intersection(this_week))
+print("All unique items:", last_week.union(this_week))
+
+# 5. Find Instagram users with more than 10,000 followers
+insta_followers = {
+    "hasnain_photos": 8500,
+    "foodie_priya": 15200,
+    "travel_with_aman": 23000,
+    "daily_meera": 9700
+}
+
+print("Users with more than 10,000 followers:")
+for username, followers in insta_followers.items():
+    if followers > 10000:
+        print(username)
+```
